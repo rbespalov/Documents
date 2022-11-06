@@ -10,10 +10,19 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+//        print("www")
+        self.window = UIWindow(frame: UIScreen.main.bounds)
 
+        let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "login") as! LoginViewController
+
+        let singInVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "singin") as! SingInViewController
+
+
+        self.window?.rootViewController = loginVC
+        self.window?.makeKeyAndVisible()
         
         return true
     }
