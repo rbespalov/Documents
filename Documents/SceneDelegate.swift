@@ -10,12 +10,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
-//        KeychainSwift().set(false, forKey: "hasPass")
-        
+                      
         window = UIWindow(windowScene: windowScene)
         
-        if KeychainSwift().getBool("hasPass")! {
+        var hasPass: Bool {
+            if KeychainSwift().get("UserPass") == nil {
+                return false
+            } else {
+                return true
+            }
+        }
+        
+        if hasPass {
             let singInVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "singin") as! SingInViewController
             let nc = UINavigationController(rootViewController: singInVC)
             nc.isNavigationBarHidden = true

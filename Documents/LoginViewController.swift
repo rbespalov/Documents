@@ -33,7 +33,6 @@ class LoginViewController: UIViewController {
         
         if passInputCount == 1 {
             if passTextField.text! == keyChain.get("UserPass") {
-                keyChain.set(true, forKey: "hasPass")
                 let tabBar = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabBar")
                 self.navigationController?.pushViewController(tabBar, animated: true)
             } else {
